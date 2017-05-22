@@ -1,0 +1,45 @@
+header {
+	width:100%;
+	height:350px;
+	background-image: url("/../images/main-image.jpg");
+	background-size: cover;
+	position: relative;
+	opacity: 0.75;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	opacity: 1.0;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color: white;
+	text-decoration: none;
+}
+
+body {
+	background: gray;
+	color: white;
+}
+
+
+
+
+form input button {
+	display: inline-block;
+}
+
+input, select, textarea {
+	color: black;
+}
+
+.error {
+	color: red;
+}
+

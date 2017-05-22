@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/weather.css">
+		<title>Weather Forcast</title>
+	</head>
+	<body ng-app="weather" ng-strict-di>
+ 		<header> 
+ 			<div class="container">
+ 			<h1 class="text-center"><a href="/index.html#!/">AngularJS Weather App</a></h1>
+ 			</div>
+ 		</header>
+
+ 		<div class="main-content">
+			<ui-view></ui-view>
+		</div>
+
+		<!-- Libs -->
+		<script src="lib/angular.min.js"></script>
+		<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
+
+		<!-- Main module -->
+		<script src="src/weather.module.js"></script>
+		<script src="src/weather.routes.js"></script>
+		<script src="src/weather.search.controller.js"></script>
+		<script src="src/weather.service.js"></script>
+		<script src="src/weather.results.controller.js"></script>
+		<!-- <script src="src/weather-data.component.js"></script> -->
+
+	</body>
