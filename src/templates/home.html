@@ -3,7 +3,7 @@
 
 	
 	<form name ="cityForm">
-		<span>City</span>
+		<!-- <span>City</span> -->
 		<input type="text" size="50" name="city" placeholder="Enter city name to see weather forcast"
 			ng-model="weatherSearch.cityName"
 			required>
@@ -13,9 +13,33 @@
 			ng-click="weatherSearch.submit()"
 			ui-sref="home.result({city: weatherSearch.cityName})">
 			Submit</button>
+
+			<button class="btn-info"
+			ng-disabled="cityForm.$invalid"
+			ng-click="weatherSearch.zipSubmit()"
+			ui-sref="home.result({city: weatherSearch.cityName})">
+			Submit Zip</button>
+
+			<div class="error" ng-if="weatherSearch.error">Invalid City</div>
+<!-- 			<div class="success" ng-if="weatherSearch.error == false">City found: {{ weatherSearch.successMessage }}</div> -->
+
+
+
 	</form>
-	<div class="error" ng-if="weatherSearch.error">Invalid City</div>
-	<div class="success" ng-if="weatherSearch.error == false">City found: {{ weatherSearch.successMessage }}</div>
+	<br>
+<!-- 	<form name = "zipForm">
+		<span>Zip</span>
+		<input type="text" size="50" name="zip" placeholder="Enter zipcode to see weather forcast"
+			ng-model="weatherSearch.zipcode"
+			pattern="\d{5}"
+			required>
+		
+		<button class="btn-info"
+			ng-disabled="zipForm.$invalid"
+			ng-click="weatherSearch.zipSubmit()"
+			ui-sref="home.result({city: weatherSearch.cityName})">
+			Submit</button>
+	</form> -->
 
 	<ui-view ng-if="weatherSearch.error == false"></ui-view>
 

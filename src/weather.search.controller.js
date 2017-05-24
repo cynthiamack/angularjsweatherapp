@@ -33,10 +33,14 @@ function WeatherSearchController(WeatherService, cityData) {
 	}
 */
 
+	ctrl.toTitleCase = function(str) {
+		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	}
+
 	ctrl.verifyCity = function (hasCountry) {
 		var name = ctrl.cityName;
 		var cities = $.grep(cityData, function(e) {return e.name === name; });
-		//console.log(cities);
+		console.log(cities);
 			if (cities.length != 0){
 					if (hasCountry === false){
 						ctrl.city = cities[0];
@@ -68,17 +72,24 @@ function WeatherSearchController(WeatherService, cityData) {
 	ctrl.submit = function () {
 		if (ctrl.cityName.includes(",")){
 			var cityAndCountry = ctrl.cityName.split(",");
-			ctrl.cityName = cityAndCountry[0];
+			ctrl.cityName = ctrl.toTitleCase(cityAndCountry[0]);
 			ctrl.country = cityAndCountry[1].replace(/\s/g, '');
-				ctrl.verifyCity(true)
+			ctrl.country = ctrl.country.toUpperCase();
+			ctrl.verifyCity(true)
 			
 		}
 		else {
+			ctrl.cityName = ctrl.toTitleCase(ctrl.cityName);
 			ctrl.verifyCity(false)
 
 
 		}
 		WeatherService.city = ctrl.city;
+	}
+
+	ctrl.zipSubmit = function () {
+		console.log(ctrl.cityName);
+		ctrl.error = false;
 	}
 
 }

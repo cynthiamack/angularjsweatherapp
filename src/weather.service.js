@@ -18,11 +18,20 @@ function WeatherService($http, ApiPath, ApiId) {
 	service.getWeatherData = function (id) {
 		console.log(id);
 		var config = {};
+		var reg = new RegExp('\d{5}');
 		config.params = {'APPID': ApiId};
 
-		return $http.get(ApiPath + "weather?" + "q=" + id, config).then(function (response) {
-			return response.data;
-		})
+		if (reg.test(id)) {
+			return $http.get(ApiPath + "weather?" + "zip=" + id, config).then(function (response) {
+				return response.data;
+			}) 
+		}
+
+		else {
+			return $http.get(ApiPath + "weather?" + "q=" + id, config).then(function (response) {
+				return response.data;
+			})
+		}
 
 	}
 
